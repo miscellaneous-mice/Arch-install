@@ -10,6 +10,7 @@
 ### To paritition Disks
 
 ```
+  For checking the disks use -> lsblk
   cfdisk /dev/sda -> select dos (for virtual machine)
 ```
   - This is how you will partition
@@ -26,4 +27,79 @@
   mkfs.ext4 /dev/sda2
   *optional -> if you've created swap -> mkswap /dev/sda3
 ```
-  - 
+  - Mounting the disks created to boot and mnt
+```
+  mount /dev/sda2 /mnt
+  mkdir /mnt/boot
+  mount /dev/sda1 /mnt/boot
+  *optional -> if you've created swap -> swapon /dev/sda3
+```
+
+## Installing Basic linux kernels and configurations
+
+  - Installing Linux kernels and development tools
+```
+  pacstrap /mnt base base-devel linux linux-firmware vim
+```
+  - Fstab configuration (files that linux tries to load in when booting)
+```
+  genfstab -U /mnt >> /mnt/etc/fstab
+```
+  - Chroot into arch installation i.e. changing root from our USB to our actual Arch linux installation
+```
+  arch-chroot /mnt /bin/bash
+```
+  - Couple of crucial packages (Initializing our network adapter and bootloader at boot time)
+```
+  pacman -S networkmanager grub
+  systemctl enable NetworkManager
+  grub-install /dev/sda
+  grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+## Final Process
+
+  - Setting our root password
+```
+  passwd
+```
+  - Setting our language (in this case english us)
+```
+  vim /etc/locale.gen -> uncomment both lines containing en-US
+  locale-gen -> to see if our languages are configured properly
+  vim /etc/locale.conf -> type -> LANG=en_US.UTF-8
+  vim /etc/hostname -> type -> Archbox
+```
+  - Setting our region
+```
+  ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+```
+  - Now to reboot our system
+```
+  exit
+  umount -R /mnt
+  reboot
+```
+
+## Post-installation steps
+
+  - Verifying if our system is proper
+```
+  pacman -S neofetch
+  neofetch
+```
+  - Adding user to our system
+```
+  useradd -mg wheel megame 
+  passwd megame
+  vim /etc/sudoers -> uncomment -> %wheel ALL = (ALL)ALL
+  reboot
+```
+
+
+
+
+
+
+
+    
