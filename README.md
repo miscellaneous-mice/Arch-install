@@ -1,5 +1,23 @@
 # Arch-install
 
+  - iso download - > https://archlinux.org/download/
+
+## Virtual box configuration
+
+  - Hardware specs
+```
+  RAM -> 8192 MB
+  Processor -> 4 CPU's
+  Video Memory -> 128 MB
+  Storage -> 30 GB
+```
+  - Other settings
+```
+  System -> boot order -> select Hard Disk as top
+  Display -> Enable 3D accelaration
+  Storage -> Select your arch iso file
+```
+
 ## Basic configuration
 
 ```
