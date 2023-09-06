@@ -21,7 +21,7 @@
 ## Basic configuration
 
 ```
-  Other stuff like wifi configuration etc. (see arch wiki)
+  Other stuff like wifi configuration etc. (see arch wiki or denshi)
   loadkeys us
   timedatectl set-ntp true
 ```
