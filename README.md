@@ -115,7 +115,7 @@
 ```
   - Configuring our pacman package manager installation animation
 ```
-  sudo vim /etc/pacman.conf -> add "ILoveCandy" below "Parallel Donwloads"
+  sudo vim /etc/pacman.conf -> add "ILoveCandy" below "Parallel Downloads"
 ```
   - Configuring firewall
 ```
