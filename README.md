@@ -127,16 +127,45 @@
   - If you wanna install gnome
 ```
   sudo pacman -S xorg xorg-server
-  sudo pacman -S gnome lxdm
-  sudo pacman -S konsole kate firefox
-  sudo systemctl start lxdm.service
-  sudo systemctl enable lxdm.service
+  sudo pacman -S gnome gnome-extra
+  sudo pacman -S kate firefox
+  sudo systemctl start gdm
+  sudo systemctl enable gdm
 ```
   - If you wanna install xfce
 ```
   sudo pacman -S xorg xorg-server xfce4 xfce4-goodies lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
   sudo systemctl start lightdm
   sudo systemctl enable lightdm
+```
+
+### Customization of KDE/XFCE distro
+
+  - Configuring KDE
+  - First we install required dependancies
+```
+  Window manager -> kronkite -> In kde store
+  File manager -> sudo pacman -S Dolphin
+  Global theme -> Layan
+```
+
+  - Configuring XFCE
+  - First we install required dependencies into appropriate folder
+```
+  Font -> Jetbrains nerd font -> ~/.fonts -> https://www.nerdfonts.com/font-downloads
+  Theme -> Gruvbox GTK theme -> ~/.themes -> https://www.gnome-look.org/p/1681313/ -> Grubox-Dark-B.zip
+  Icons -> Grubox icon pack -> ~/.icons -> https://www.gnome-look.org/p/1327720/
+```
+  - Now we apply the theme by following settings
+```
+  Settings -> Appearance -> style -> select Grubox-Dark-B
+                         -> Font -> select JetBrains nerd font
+                         -> Icons -> select Grubox icons
+
+  Settings -> Window manager ->  Style -> Theme -> Grubox-Dark-B
+                                       -> Title font -> Jetbrains nerd font
+
+  
 ```
 
 
