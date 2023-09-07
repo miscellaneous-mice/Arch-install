@@ -145,6 +145,7 @@
   - If you wanna install xfce
 ```
   sudo pacman -S xorg xorg-server xfce4 xfce4-goodies lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+  sudo pacman -S kate firefox
   sudo systemctl start lightdm
   sudo systemctl enable lightdm
 ```
