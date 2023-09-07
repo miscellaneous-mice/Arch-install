@@ -114,6 +114,31 @@
   reboot
 ```
 
+### Different Distro's for linux
+
+  - If you wanna install KDE
+```
+  sudo pacman -S xorg xorg-server
+  sudo pacman -S plasma sddm
+  sudo pacman -S konsole kate firefox
+  sudo systemctl start sddm
+  sudo systemctl enable sddm
+```
+  - If you wanna install gnome
+```
+  sudo pacman -S xorg xorg-server
+  sudo pacman -S gnome lxdm
+  sudo pacman -S konsole kate firefox
+  sudo systemctl start lxdm.service
+  sudo systemctl enable lxdm.service
+```
+  - If you wanna install xfce
+```
+  sudo pacman -S xorg xorg-server xfce4 xfce4-goodies lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+  sudo systemctl start lightdm
+  sudo systemctl enable lightdm
+```
+
 
 
 
