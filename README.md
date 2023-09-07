@@ -113,6 +113,16 @@
   vim /etc/sudoers -> uncomment -> %wheel ALL = (ALL)ALL
   reboot
 ```
+  - Configuring our pacman package manager installation animation
+```
+  sudo vim /etc/pacman.conf -> add "ILoveCandy" below "Parallel Donwloads"
+```
+  - Configuring firewall
+```
+  sudo pacman -S ufw
+  sudo systemctl start ufw
+  sudo systemctl enable ufw
+```
 
 ### Different Distro's for linux
 
