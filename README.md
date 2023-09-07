@@ -139,7 +139,7 @@
   sudo systemctl enable lightdm
 ```
 
-### Customization of KDE/XFCE distro
+### Customization of KDE distro
 
   - Configuring KDE
   - First we install required dependancies
@@ -148,6 +148,8 @@
   File manager -> sudo pacman -S Dolphin
   Global theme -> Layan
 ```
+
+### Customization of XFCE distro
 
   - Configuring XFCE
   - First we install required dependencies into appropriate folder
