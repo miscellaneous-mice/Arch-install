@@ -365,6 +365,21 @@ $ reboot
 
 ## Post Installation
 
+- Verifying if our system is proper
+```
+$ sudo pacman -S neofetch
+$ neofetch
+```
+- Configuring our pacman package manager installation animation
+```
+$ sudo vim /etc/pacman.conf -> add "ILoveCandy" below "Parallel Downloads"
+```
+- Configuring firewall
+```
+$ sudo pacman -S ufw
+$ sudo systemctl enable ufw
+$ sudo systemctl start ufw
+```
 - Installing xorg
 ```
 $ sudo pacman -S xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xterm
