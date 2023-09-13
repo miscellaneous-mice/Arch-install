@@ -156,7 +156,7 @@ $ lsblk
 
 ### Making mounts, pointing it.
 
-- For installation of arch we need to mount the following filesystem
+- For installation of arch key components, we need to mount the following filesystem
 ```
 $ mount /dev/sda3 /mnt
 $ mkdir /mnt/boot
@@ -165,9 +165,138 @@ $ mount /dev/sda1 /mnt/boot
 $ mount /dev/sda4 /mnt/home
 ```
 
+## Kernel configurations and installation
+
+### Pacman configuration (optional)
+
+- Updating our mirrorlist
+```
+$ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+```
+- Ranking mirrors
+```
+$ sudo pacman -Sy pacman-contrib
+$ rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
+```
+- Verifying our ranked mirrors (optional)
+```
+$ nano /etc/pacman.d/mirrorlist -> Do nothing
+```
+
+### Linux kernels
+
+- Installing linux kernels
+```
+$ pacstrap -K /mnt base linux linux-firmware base-devel
+```
+
+### Creating fstab for recognising hardrives for allocating, booting into our drive.
+
+- Creating fstab
+```
+$ genfstab -U -p /mnt >> /mnt/etc/fstab
+```
+- Verifying fstab (optional)
+```
+$ nano /mnt/etc/fstab -> Do nothing
+```
+
+## Basic Configurations (locale, time, keyboard, language, etc.)
+
+- Booting into our installation underneath the drive
+```
+$ arch-chroot /mnt
+```
+- Install vim and bash autocomplete
+```
+$ sudo pacman -S vim bash-completion
+```
+- Enabling our locales
+```
+$ vim /etc/locale.gen -> Uncomment -> en_US.UTF-8 UTF-8
+```
+- Verifying our locale-gen
+```
+$ locale-gen
+```
+- Echo and create the language
+```
+$ echo LANG=en_US.UTF-8 > /etc/locale.conf
+$ export LANG=en_US.UTF-8
+```
+- Configuring timezone
+```
+$ ln -s /usr/share/zoneinfo/Asia/Kolkata > /etc/localtime
+```
+- Sync our hardware clock
+```
+$ hwclock --systohc --utc
+```
+- Create an hostname for our system
+```
+$ echo ArchBox > /etc/hostname
+```
+- Enabling trim support for our ssd
+```
+$ systemctl enable fstrim.timer
+```
+- Enabling 32-bit support
+```
+$ vim /etc/pacman.conf -> Uncomment -> [multilib]
+                                       Include = /etc/pacman.d/mirrorlist
+$ sudo pacman -Sy
+```
+- Setting our root password
+```
+$ passwd
+```
+- Adding our user
+```
+$ useradd -m -g users -G wheel,storage,power -s /bin/bash megame
+```
+- Adding password to our user
+```
+$ passwd megame
+```
+- Modifying the sudo file
+```
+$ EDITOR=vim visudo -> Uncomment -> %wheel ALL=ALL(ALL:ALL) ALL
+                    -> At the end add : Defaults rootpw
+```
 
 
+## Installing the bootloader
 
+- Verifying if we are in a efi system
+```
+$ mount -t efivarfs efivarfs /sys/firmware/efi/efivars/
+$ ls /sys/firmware/efi/efivars/
+```
+
+- Install the bootloader
+```
+$ bootctl install
+```
+- Writing the boot entries
+```
+$ vim /boot/loader/entries/arch.conf -> Type the boot entry given below
+-----------------------------
+title Arch
+linux /vmlinuz-linux
+initrd /initramfs-linux.img
+-----------------------------
+```
+- We need to create line options and link to our root drive where our system is stored
+```
+$ echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/sda3) rw" >> /boot/loader/entries/arch.conf
+$ vim /boot/loader/entries/arch.conf
+```
+
+## Hardware Configuration
+
+### Configuring our intel CPU
+
+- Installing intel-ucode
 
 
 
