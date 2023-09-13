@@ -132,7 +132,7 @@
   sudo systemctl enable ufw
 ```
 
-### Different Distro's for linux
+### Different Desktop Environments for linux
 
   - If you wanna install KDE
 ```
@@ -158,7 +158,7 @@
   sudo systemctl enable lightdm
 ```
 
-### Customization of KDE distro
+### Customization of KDE
 
   - Configuring KDE
   - First we install required dependancies
@@ -168,7 +168,7 @@
   Global theme -> Layan
 ```
 
-### Customization of XFCE distro
+### Customization of XFCE
 
   - Configuring XFCE
   - First we install required dependencies into appropriate folder
