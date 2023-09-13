@@ -77,6 +77,14 @@
 
 ## Final Process
 
+  -Install intel-ucode
+```
+  pacman -S intel-ucode
+```
+  - Configuring our graphics driver
+```
+  pacman -S virtualbox-guest-utils xf86-video-vmware    
+```
   - Setting our root password
 ```
   passwd
