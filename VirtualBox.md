@@ -77,7 +77,7 @@
 
 ## Final Process
 
-  -Install intel-ucode
+  - Install intel-ucode
 ```
   pacman -S intel-ucode
 ```
