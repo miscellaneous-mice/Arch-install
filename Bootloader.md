@@ -226,7 +226,7 @@ $ export LANG=en_US.UTF-8
 ```
 - Configuring timezone
 ```
-$ ln -s /usr/share/zoneinfo/Asia/Kolkata > /etc/localtime
+$ ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 ```
 - Sync our hardware clock
 ```
@@ -234,7 +234,7 @@ $ hwclock --systohc --utc
 ```
 - Create an hostname for our system
 ```
-$ echo ArchBox > /etc/hostname
+$ echo Legion > /etc/hostname
 ```
 - Enabling trim support for our ssd
 ```
@@ -283,6 +283,7 @@ $ vim /boot/loader/entries/arch.conf -> Type the boot entry given below
 -----------------------------
 title Arch
 linux /vmlinuz-linux
+initrd /intel-ucode.img
 initrd /initramfs-linux.img
 -----------------------------
 ```
@@ -294,9 +295,89 @@ $ vim /boot/loader/entries/arch.conf
 
 ## Hardware Configuration
 
-### Configuring our intel CPU
-
 - Installing intel-ucode
+```
+$ sudo pacman -S intel-ucode
+```
+- Our internet status to figure out which is the working internet driver
+```
+$ ip link -> Get the drivername
+```
+- Enable dhcpcd service
+```
+$ sudo pacman -S dhcpcd
+$ sudo systemctl enable dhcpcd@drivername.service
+```
+- Install networkmanager
+```
+$ sudo pacman -S networkmanager
+$ sudo systemctl enable NetworkManager.service
+```
+- Installing linux headers
+```
+$ sudo pacman -S linux-headers
+```
+- Installing Nvidia drivers
+```
+$ sudo pacman -S nvidia-dkms libglvnd nvidia-utils opencl-nvidia lib32-libglvnd lib32-nvidia-utils lib32-opencl-nvidia nvidia-settings
+```
+- Enabling nvidia drms
+```
+$ sudo vim /etc/mkinitcpio.conf -> add the following content into the file
+
+------------------------------------------------------
+MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+------------------------------------------------------
+```
+- Making sure everything is loaded properly
+```
+$ sudo vim /boot/loader/entries/arch.conf -> right next to rw type this
+
+--------------------------------------------------------------------
+options root=PARTUUID=______________________ rw nvidia-drm.modeset=1
+--------------------------------------------------------------------
+```
+- Make a hook for pacman (updates nvidia drivers and ramfs)
+```
+$ sudo mkdir /etc/pacman.d/hooks
+$ sudo vim /etc/pacman.d/hooks/nvidia.hook -> type the below config
+
+------------------------------------------------------------------------
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=nvidia
+
+[Action]
+Depends=mkinitcpio
+when=PostTransaction
+Exec=/usr/bin/mkinitcpio -P
+------------------------------------------------------------------------
+```
+- Now we can boot into the OS
+```
+$ exit
+$ umount -R /mnt
+$ reboot
+```
+
+## Post Installation
+
+- Installing xorg
+```
+$ sudo pacman -S xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xterm
+```
+- Installation of KDE plasma
+```
+$ sudo pacman -S plasma sddm
+$ sudo systemctl enable sddm.service
+```
+- Reboot
+```
+$ reboot
+```
 
 
 
