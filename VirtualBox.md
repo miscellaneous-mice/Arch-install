@@ -67,6 +67,14 @@
 ```
   arch-chroot /mnt /bin/bash
 ```
+  - Install intel-ucode
+```
+  pacman -S intel-ucode
+```
+  - Configuring our graphics driver
+```
+  pacman -S virtualbox-guest-utils xf86-video-vmware    
+```
   - Couple of crucial packages (Initializing our network adapter and bootloader at boot time)
 ```
   pacman -S networkmanager grub
@@ -77,14 +85,6 @@
 
 ## Final Process
 
-  - Install intel-ucode
-```
-  pacman -S intel-ucode
-```
-  - Configuring our graphics driver
-```
-  pacman -S virtualbox-guest-utils xf86-video-vmware    
-```
   - Setting our root password
 ```
   passwd
