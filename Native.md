@@ -263,7 +263,10 @@ $ passwd megame
 $ EDITOR=vim visudo -> Uncomment -> %wheel ALL=ALL(ALL:ALL) ALL
                     -> At the end add : Defaults rootpw
 ```
-
+- Installing intel-ucode
+```
+$ sudo pacman -S intel-ucode
+```
 
 ## Installing the bootloader
 
@@ -295,10 +298,6 @@ $ vim /boot/loader/entries/arch.conf
 
 ## Hardware Configuration
 
-- Installing intel-ucode
-```
-$ sudo pacman -S intel-ucode
-```
 - Our internet status to figure out which is the working internet driver
 ```
 $ ip link -> Get the drivername
