@@ -393,7 +393,9 @@ $ sudo systemctl enable sddm.service
 $ reboot
 ```
 
-
+## References
+- https://github.com/michaelmcandrew/arch-install
+- https://youtu.be/_JYIAaLrwcY?si=19cTXzmPgARb8m6K
 
 
 
