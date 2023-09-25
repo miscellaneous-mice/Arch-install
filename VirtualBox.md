@@ -111,7 +111,7 @@
 
   - Verifying if our system is proper
 ```
-  pacman -S neofetch
+  pacman -S neofetch pacman-contrib
   neofetch
 ```
   - Adding user to our system
