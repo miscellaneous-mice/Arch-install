@@ -224,7 +224,7 @@ $ locale-gen
 $ echo LANG=en_US.UTF-8 > /etc/locale.conf
 $ export LANG=en_US.UTF-8
 ```
-- Configuring timezone
+- Configuring timezone. See which region is yours, else press ```TAB``` to autocomplete after typing ```/usr/share/zoneinfo/Am____```
 ```
 $ ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 ```
