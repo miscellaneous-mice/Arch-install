@@ -118,7 +118,7 @@
 ```
   $ useradd -mg wheel {username}
   $ passwd {username}
-  $ vim /etc/sudoers -> uncomment -> %wheel ALL = (ALL)ALL
+  $ vim /etc/sudoers -> uncomment -> %wheel ALL = (ALL:ALL)ALL
   $ reboot
 ```
   - Configuring our pacman package manager installation animation
