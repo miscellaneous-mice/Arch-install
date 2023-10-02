@@ -34,7 +34,7 @@
   - This is how you will partition
 ```
   sda1 -> 1024M/1G -> boot disk -> select and press B (for making the disk bootable)
-  sda2 -> 30G -> home and other stuff
+  sda2 -> 29G -> home and other stuff
   *optional -> sda3 -> 1G (make sure sda2 is made as 29G) -> Extra buffer ram (swap memory)
 
   write and exit out of the cfdisk configuration menu
