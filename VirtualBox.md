@@ -21,7 +21,7 @@
 ## Basic configuration
 
 ```
-  Other stuff like wifi configuration etc. (see [arch wiki or denshi](https://wiki.archlinux.org/title/iwd))
+  Other stuff like wifi configuration etc. (see https://wiki.archlinux.org/title/iwd)
   $ loadkeys us
   $ timedatectl set-ntp true
 ```
