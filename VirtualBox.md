@@ -114,10 +114,10 @@
   $ pacman -S neofetch pacman-contrib
   $ neofetch
 ```
-  - Adding user to our system
+  - Adding username to our system
 ```
-  $ useradd -mg wheel megame 
-  $ passwd megame
+  $ useradd -mg wheel {username}
+  $ passwd {username}
   $ vim /etc/sudoers -> uncomment -> %wheel ALL = (ALL)ALL
   $ reboot
 ```
