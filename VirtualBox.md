@@ -96,7 +96,7 @@
   $ vim /etc/locale.conf -> type -> LANG=en_US.UTF-8
   $ vim /etc/hostname -> type -> Archbox
 ```
-  - Setting our region. See which region is your else press ```TAB``` to autocomplete after typing ```/usr/share/zoneinfo/Am____```
+  - Setting our region. See which region is yours, else press ```TAB``` to autocomplete after typing ```/usr/share/zoneinfo/Am____```
 ```
   $ ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 ```
