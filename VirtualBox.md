@@ -22,14 +22,14 @@
 
 ```
   Other stuff like wifi configuration etc. (see arch wiki or denshi)
-  loadkeys us
-  timedatectl set-ntp true
+  $ loadkeys us
+  $ timedatectl set-ntp true
 ```
 ### To paritition Disks
 
 ```
   For checking the disks use -> lsblk
-  cfdisk /dev/sda -> select dos (for virtual machine)
+  $ cfdisk /dev/sda -> select dos (for virtual machine)
 ```
   - This is how you will partition
 ```
@@ -41,121 +41,121 @@
 ```
   - Specifying the type of disk (ext4, fat32, etc..)
 ```
-  mkfs.ext4 /dev/sda1
-  mkfs.ext4 /dev/sda2
-  *optional -> if you've created swap -> mkswap /dev/sda3
+  $ mkfs.ext4 /dev/sda1
+  $ mkfs.ext4 /dev/sda2
+  *optional -> if you've created swap -> $ mkswap /dev/sda3
 ```
   - Mounting the disks created to boot and mnt
 ```
-  mount /dev/sda2 /mnt
-  mkdir /mnt/boot
-  mount /dev/sda1 /mnt/boot
-  *optional -> if you've created swap -> swapon /dev/sda3
+  $ mount /dev/sda2 /mnt
+  $ mkdir /mnt/boot
+  $ mount /dev/sda1 /mnt/boot
+  *optional -> if you've created swap -> $ swapon /dev/sda3
 ```
 
 ## Installing Basic linux kernels and configurations
 
   - Installing Linux kernels and development tools
 ```
-  pacstrap /mnt base base-devel linux linux-firmware vim
+  $ pacstrap /mnt base base-devel linux linux-firmware vim
 ```
   - Fstab configuration (files that linux tries to load in when booting)
 ```
-  genfstab -U /mnt >> /mnt/etc/fstab
+  $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
   - Chroot into arch installation i.e. changing root from our USB to our actual Arch linux installation
 ```
-  arch-chroot /mnt /bin/bash
+  $ arch-chroot /mnt /bin/bash
 ```
   - Install intel-ucode
 ```
-  pacman -S intel-ucode
+  $ pacman -S intel-ucode
 ```
   - Configuring our graphics driver
 ```
-  pacman -S virtualbox-guest-utils xf86-video-vmware    
+  $ pacman -S virtualbox-guest-utils xf86-video-vmware    
 ```
   - Couple of crucial packages (Initializing our network adapter and bootloader at boot time)
 ```
-  pacman -S networkmanager grub
-  systemctl enable NetworkManager
-  grub-install /dev/sda
-  grub-mkconfig -o /boot/grub/grub.cfg
+  $ pacman -S networkmanager grub
+  $ systemctl enable NetworkManager
+  $ grub-install /dev/sda
+  $ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ## Final Process
 
   - Setting our root password
 ```
-  passwd
+  $ passwd
 ```
   - Setting our language (in this case english us)
 ```
-  vim /etc/locale.gen -> uncomment both lines containing en-US
-  locale-gen -> to see if our languages are configured properly
-  vim /etc/locale.conf -> type -> LANG=en_US.UTF-8
-  vim /etc/hostname -> type -> Archbox
+  $ vim /etc/locale.gen -> uncomment both lines containing en-US
+  $ locale-gen -> to see if our languages are configured properly
+  $ vim /etc/locale.conf -> type -> LANG=en_US.UTF-8
+  $ vim /etc/hostname -> type -> Archbox
 ```
   - Setting our region
 ```
-  ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+  $ ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 ```
   - Now to reboot our system
 ```
-  exit
-  umount -R /mnt
-  reboot
+  $ exit
+  $ umount -R /mnt
+  $ reboot
 ```
 
 ## Post-installation steps
 
   - Verifying if our system is proper
 ```
-  pacman -S neofetch pacman-contrib
-  neofetch
+  $ pacman -S neofetch pacman-contrib
+  $ neofetch
 ```
   - Adding user to our system
 ```
-  useradd -mg wheel megame 
-  passwd megame
-  vim /etc/sudoers -> uncomment -> %wheel ALL = (ALL)ALL
-  reboot
+  $ useradd -mg wheel megame 
+  $ passwd megame
+  $ vim /etc/sudoers -> uncomment -> %wheel ALL = (ALL)ALL
+  $ reboot
 ```
   - Configuring our pacman package manager installation animation
 ```
-  sudo vim /etc/pacman.conf -> add "ILoveCandy" below "Parallel Downloads"
+  $ sudo vim /etc/pacman.conf -> add "ILoveCandy" below "Parallel Downloads"
 ```
   - Configuring firewall
 ```
-  sudo pacman -S ufw
-  sudo systemctl start ufw
-  sudo systemctl enable ufw
+  $ sudo pacman -S ufw
+  $ sudo systemctl start ufw
+  $ sudo systemctl enable ufw
 ```
 
 ### Different Desktop Environments for linux
 
   - If you wanna install KDE
 ```
-  sudo pacman -S xorg xorg-server
-  sudo pacman -S plasma sddm
-  sudo pacman -S konsole kate firefox
-  sudo systemctl start sddm
-  sudo systemctl enable sddm
+  $ sudo pacman -S xorg xorg-server
+  $ sudo pacman -S plasma sddm
+  $ sudo pacman -S konsole kate firefox
+  $ sudo systemctl start sddm
+  $ sudo systemctl enable sddm
 ```
   - If you wanna install gnome
 ```
-  sudo pacman -S xorg xorg-server
-  sudo pacman -S gnome gnome-extra
-  sudo pacman -S kate firefox
-  sudo systemctl start gdm
-  sudo systemctl enable gdm
+  $ sudo pacman -S xorg xorg-server
+  $ sudo pacman -S gnome gnome-extra
+  $ sudo pacman -S kate firefox
+  $ sudo systemctl start gdm
+  $ sudo systemctl enable gdm
 ```
   - If you wanna install xfce
 ```
-  sudo pacman -S xorg xorg-server xfce4 xfce4-goodies lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
-  sudo pacman -S kate firefox
-  sudo systemctl start lightdm
-  sudo systemctl enable lightdm
+  $ sudo pacman -S xorg xorg-server xfce4 xfce4-goodies lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+  $ sudo pacman -S kate firefox
+  $ sudo systemctl start lightdm
+  $ sudo systemctl enable lightdm
 ```
 
 ### Customization of KDE
