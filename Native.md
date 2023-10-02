@@ -312,7 +312,7 @@ $ sudo systemctl enable dhcpcd@drivername.service
 $ sudo pacman -S networkmanager
 $ sudo systemctl enable NetworkManager.service
 ```
-- Installing linux headers. If you have AMD graphics card directly skip to 
+- Installing linux headers. If you have AMD graphics card directly skip to [Boot](https://github.com/miscellaneous-mice/Arch-install/blob/main/Native.md#now-we-can-boot-into-the-os)
 ```
 $ sudo pacman -S linux-headers
 ```
