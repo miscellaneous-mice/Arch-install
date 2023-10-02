@@ -67,7 +67,7 @@
 ```
   $ arch-chroot /mnt /bin/bash
 ```
-  - Install intel-ucode
+  - Install intel-ucode. You don't need this for AMD processors.
 ```
   $ pacman -S intel-ucode
 ```
