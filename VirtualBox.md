@@ -21,7 +21,7 @@
 ## Basic configuration
 
 ```
-  Other stuff like wifi configuration etc. (see arch wiki or denshi)
+  Other stuff like wifi configuration etc. (see [arch wiki or denshi](https://wiki.archlinux.org/title/iwd))
   $ loadkeys us
   $ timedatectl set-ntp true
 ```
@@ -31,7 +31,7 @@
   For checking the disks use -> lsblk
   $ cfdisk /dev/sda -> select dos (for virtual machine)
 ```
-  - This is how you will partition
+  - This is how you will partition (all are primary)
 ```
   sda1 -> 1024M/1G -> boot disk -> select and press B (for making the disk bootable)
   sda2 -> 29G -> home and other stuff
