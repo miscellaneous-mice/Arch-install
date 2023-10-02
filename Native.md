@@ -252,18 +252,18 @@ $ passwd
 ```
 - Adding our user
 ```
-$ useradd -m -g users -G wheel,storage,power -s /bin/bash megame
+$ useradd -m -g users -G wheel,storage,power -s /bin/bash {username}
 ```
 - Adding password to our user
 ```
-$ passwd megame
+$ passwd {username}
 ```
 - Modifying the sudo file
 ```
 $ EDITOR=vim visudo -> Uncomment -> %wheel ALL=ALL(ALL:ALL) ALL
                     -> At the end add : Defaults rootpw
 ```
-- Installing intel-ucode
+- Installing intel-ucode. Don't do this for AMD cards!!
 ```
 $ sudo pacman -S intel-ucode
 ```
@@ -282,7 +282,7 @@ $ bootctl install
 ```
 - Writing the boot entries
 ```
-$ vim /boot/loader/entries/arch.conf -> Type the boot entry given below
+$ vim /boot/loader/entries/arch.conf -> Type the boot entry given below. Dont need **initrd /intel-ucode.img** line for AMD processors!!
 -----------------------------
 title Arch
 linux /vmlinuz-linux
@@ -312,7 +312,7 @@ $ sudo systemctl enable dhcpcd@drivername.service
 $ sudo pacman -S networkmanager
 $ sudo systemctl enable NetworkManager.service
 ```
-- Installing linux headers
+- Installing linux headers. If you have AMD graphics card directly skip to 
 ```
 $ sudo pacman -S linux-headers
 ```
@@ -355,7 +355,7 @@ when=PostTransaction
 Exec=/usr/bin/mkinitcpio -P
 ------------------------------------------------------------------------
 ```
-- Now we can boot into the OS
+#### Now we can boot into the OS
 ```
 $ exit
 $ umount -R /mnt
