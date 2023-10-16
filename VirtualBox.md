@@ -17,7 +17,18 @@
   Display -> Enable 3D accelaration
   Storage -> Select your arch iso file
 ```
+## VMware configuration
+  - Hardware specs
+```
+  RAM -> 8192
+  Processor -> 4 CPU's
+  Video Memory -> 4 GB
+  Storage -> 30 GB
+```
+- Other settings
+```
 
+```
 ## Basic configuration
 
 ```
