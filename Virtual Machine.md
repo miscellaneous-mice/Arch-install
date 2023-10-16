@@ -29,7 +29,7 @@
 ```
   Hardware -> Processors -> Virtualize Intel VT-x/EPT or AMD-V/RVI
   Hardware -> Display -> Accelerate 3D graphics
-  Options -> Power -> Both should be enabled
+  Options -> Power -> Report Battery info to the guest
 ```
 ## Basic configuration
 
