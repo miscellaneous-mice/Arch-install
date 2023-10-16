@@ -22,12 +22,14 @@
 ```
   RAM -> 8192
   Processor -> 4 CPU's
-  Video Memory -> 4 GB
+  Video Memory -> 4 GB (3D graphics shd be on to access this setting)
   Storage -> 30 GB
 ```
 - Other settings
 ```
-
+  Hardware -> Processors -> Virtualize Intel VT-x/EPT or AMD-V/RVI
+  Hardware -> Display -> Accelerate 3D graphics
+  Options -> Power -> Both should be enabled
 ```
 ## Basic configuration
 
@@ -82,7 +84,7 @@
 ```
   $ pacman -S intel-ucode
 ```
-  - Configuring our graphics driver
+  - Configuring our graphics driver. For VMware dont need ```virtualbox-guest-utils```
 ```
   $ pacman -S virtualbox-guest-utils xf86-video-vmware    
 ```
@@ -102,10 +104,10 @@
 ```
   - Setting our language (in this case english us)
 ```
-  $ vim /etc/locale.gen -> uncomment both lines containing en-US
+  $ vim /etc/locale.gen -> uncomment en-IN.UTF-8
   $ locale-gen -> to see if our languages are configured properly
-  $ vim /etc/locale.conf -> type -> LANG=en_US.UTF-8
-  $ vim /etc/hostname -> type -> Archbox
+  $ echo "LANG=en_IN.UTF-8" >>  /etc/locale.conf
+  $ echo "ArchBox" >> /etc/hostname
 ```
   - Setting our region. See which region is yours, else press ```TAB``` to autocomplete after typing ```/usr/share/zoneinfo/Am____```
 ```
