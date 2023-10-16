@@ -104,9 +104,9 @@
 ```
   - Setting our language (in my case english IN)
 ```
-  $ vim /etc/locale.gen -> uncomment en-IN.UTF-8
+  $ vim /etc/locale.gen -> uncomment both en_US
   $ locale-gen -> to see if our languages are configured properly
-  $ echo "LANG=en_IN.UTF-8" >>  /etc/locale.conf
+  $ echo "LANG=en_US.UTF-8" >>  /etc/locale.conf
   $ echo "ArchBox" >> /etc/hostname
 ```
   - Setting our region. See which region is yours, else press ```TAB``` to autocomplete after typing ```/usr/share/zoneinfo/Am____```
