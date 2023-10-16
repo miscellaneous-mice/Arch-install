@@ -102,7 +102,7 @@
 ```
   $ passwd
 ```
-  - Setting our language (in this case english us)
+  - Setting our language (in my case english IN)
 ```
   $ vim /etc/locale.gen -> uncomment en-IN.UTF-8
   $ locale-gen -> to see if our languages are configured properly
